@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { Header as HeaderType, User } from '../../../../payload/payload-types'
+import { Header as HeaderType } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
 import { CartLink } from '../../CartLink'
 import { CMSLink } from '../../Link'
@@ -36,6 +36,9 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         appearance="primary"
         onClick={() => (window.location.href = '/login')}
       />}
+      {/* If a user doesn't exist, include a login button */}
+      {user && <CartLink />}
+      {/* If a user exists, include the cartlink */}
     </nav>
   )
 }
